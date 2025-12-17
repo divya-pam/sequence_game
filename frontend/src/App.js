@@ -6,7 +6,7 @@ import LobbyScreen from './components/LobbyScreen';
 import GameScreen from './components/GameScreen';
 import './App.css';
 
-const SOCKET_URL = 'https://sequence-game-fb1e.onrender.com';
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
 
 function App() {
   const [socket, setSocket] = useState(null);

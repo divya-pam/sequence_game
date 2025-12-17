@@ -7,7 +7,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-here'
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": ["https://your-frontend-domain.vercel.app", "http://localhost:3000"]}})
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Game state storage
@@ -368,5 +368,6 @@ def handle_leave_room(data):
                 emit('players_updated', {'players': room['players']}, room=room_code)
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, host='0.0.0.0', port=5001)
+    port = int(os.environ.get('PORT', 5000))
+    socketio.run(app, debug=False, host='0.0.0.0', port=port)
 
