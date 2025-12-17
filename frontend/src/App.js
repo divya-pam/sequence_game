@@ -6,7 +6,7 @@ import LobbyScreen from './components/LobbyScreen';
 import GameScreen from './components/GameScreen';
 import './App.css';
 
-const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5000';
+const SOCKET_URL = process.env.REACT_APP_SOCKET_URL || 'http://localhost:5001';
 
 function App() {
   const [socket, setSocket] = useState(null);
@@ -39,7 +39,7 @@ function App() {
 
     newSocket.on('connect_error', (error) => {
       console.error('Connection error:', error);
-      alert('Cannot connect to server. Make sure the backend is running on http://localhost:5000');
+      alert('Cannot connect to server. Make sure the backend is running on http://localhost:5001');
     });
 
     setSocket(newSocket);
@@ -198,7 +198,7 @@ function App() {
         <div className="connection-status">
           <p>⚠️ Connecting to server...</p>
           <p style={{fontSize: '12px', color: '#666'}}>
-            Make sure backend is running on http://localhost:5000
+            Make sure backend is running on http://localhost:5001
           </p>
         </div>
       )}

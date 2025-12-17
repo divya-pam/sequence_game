@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 from flask_socketio import SocketIO, emit, join_room, leave_room
 from flask_cors import CORS
@@ -368,6 +369,6 @@ def handle_leave_room(data):
                 emit('players_updated', {'players': room['players']}, room=room_code)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5001))
     socketio.run(app, debug=False, host='0.0.0.0', port=port)
 
